@@ -416,3 +416,7 @@ Generation existing tidak memanggil AI lagi; feedback dipicu manual dan tombol p
 6. Functional states lebih penting daripada dekorasi.
 7. Angka berasal dari database; AI hanya membantu rekomendasi dan bahasa feedback.
 8. Jangan menambahkan UI, layanan, atau abstraction di luar PRD.
+
+### Detail persistence terverifikasi (T02)
+
+Driver pg, lib/db.js server-only dan lib/db-config.mjs untuk konfigurasi TLS bersama script CLI. db/migrate.mjs menerapkan SQL versioned dengan advisory lock dan ledger ecoaction_migrations; ledger hanya metadata operasional. db/seed.mjs memakai DEMO_USER_ID sintetis dan bersifat idempotent. RLS users/actions aktif tanpa policy publik, privilege anon/authenticated dicabut. db/verify.mjs memeriksa constraint/read-write dengan fixture rollback.

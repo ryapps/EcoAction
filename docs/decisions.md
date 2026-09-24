@@ -161,3 +161,7 @@ Keputusan mengikuti brief user. ASSUMPTION dapat direvisi bila aturan resmi berb
 ## Decision 014 — Fondasi lokal T01
 
 Next.js 16.3.6, React 19.3.0, dan Tailwind 4.3.3 dipin dengan package-lock.json; Node.js 24. Versi diambil dari npm registry dan build berhasil. System font sesuai desain; komponen shadcn ditunda hingga ada kebutuhan kontrol UI. .env dipertahankan dan diabaikan Git. Halaman awal tidak menampilkan angka atau aksi rekaan. Next.js menambahkan blok panduan agent otomatis pada AGENTS.md; aturan proyek tetap dipertahankan.
+
+## Decision 015 — Persistence T02
+
+Satu driver pg 8.23.0; modul aplikasi memakai server-only, pool maksimum satu koneksi per instance, CA eksplisit dan TLS terverifikasi. Koneksi script migration menggunakan MIGRATION_DATABASE_URL. Migration ditransaksikan dengan advisory lock dan ledger teknis ecoaction_migrations ber-checksum (normalisasi LF), bukan entity produk. Users/actions tetap dua entity produk; RLS diaktifkan dan privilege anon/authenticated dicabut. Seed menggunakan UUID konfigurasi serta identitas demo@ecoaction.example, tidak menimpa identitas yang bertabrakan. Uji constraint memakai fixture rollback terpisah dari user demo. Tidak ada reset/delete data existing. CA disertakan melalui outputFileTracingIncludes untuk deployment berikutnya.

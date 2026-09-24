@@ -5,18 +5,23 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "db:migrate": "node --env-file=.env db/migrate.mjs",
+    "db:seed": "node --env-file=.env db/seed.mjs",
+    "db:verify": "node --env-file=.env db/verify.mjs"
   },
   "engines": {
     "node": ">=24 <25"
   },
   "dependencies": {
     "next": "16.3.6",
+    "pg": "8.23.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
-    "tailwindcss": "4.3.3",
-    "@tailwindcss/postcss": "4.3.3"
+    "@tailwindcss/postcss": "4.3.3",
+    "tailwindcss": "4.3.3"
   }
 }

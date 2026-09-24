@@ -17,7 +17,7 @@ Timebox P0: 25 menit.
 
 Timebox P0: 25 menit.
 
-- [ ] **T02 [P0] Buktikan persistence untuk user demo — 15 menit.** Goal: koneksi, migration dua entity/constraint/index, seed idempotent sintetis. Dependency: T01. Definition of Done: seed dua kali tetap satu user; read/write tervalidasi tanpa data pribadi. Trace: M1/M2/Q1.
+- [x] **T02 [P0] Buktikan persistence untuk user demo — 15 menit.** Goal: koneksi, migration dua entity/constraint/index, seed idempotent sintetis. Dependency: T01. Definition of Done: seed dua kali tetap satu user; read/write tervalidasi tanpa data pribadi. Trace: M1/M2/Q1.
 - [ ] **T03 [P0] Tetapkan kalender dan ownership server — 10 menit.** Goal: user aktif dan tanggal Asia/Jakarta dipakai semua operasi. Dependency: T02. Definition of Done: client tidak memilih user/tanggal; batas Minggu–Senin dan tengah malam diperiksa; fixture uji terpisah dari demo. Trace: M1/M2/M3.
 
 **Definition of Done:** database nyata siap untuk vertical slice, bukan storage mock.
@@ -145,3 +145,7 @@ Pembaruan terbaru Supabase: SELECT 1 melalui DATABASE_URL berhasil dengan prod-c
 ## Bukti T01 selesai
 
 Next.js 16.3.6 + React 19.3.0 + Tailwind 4.3.3, JavaScript App Router, halaman awal utilitarian, .env.example tanpa secret, lockfile, README, dan Git lokal tersedia. npm run build lulus. Agent-browser membuka halaman tanpa error; screenshot artifacts/t01-mobile.png ditinjau, scrollWidth dan innerWidth sama-sama 360 px. .env terkonfirmasi diabaikan Git. Tidak ada integrasi database/AI atau fitur T02+ yang diklaim selesai. Task berikutnya T02: migration dua entity dan seed idempotent.
+
+## Bukti T02 selesai
+
+Migration 001_initial.sql diterapkan ke Supabase; eksekusi kedua melewati migration yang sudah diterapkan. Seed dijalankan dua kali dan verifikasi mengonfirmasi satu user demo. npm run db:verify lulus read/write, unique, category/status allowlist, judul nonkosong/trim, FK, RLS, penolakan SELECT role anon, serta rollback fixture. npm run build lulus. DEMO_USER_ID sintetis ditambahkan lokal tanpa mengubah key/koneksi existing. Task berikutnya T03: kalender Asia/Jakarta dan ownership server.
